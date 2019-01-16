@@ -37,9 +37,13 @@ public class Calculator {
             }
             else if (operation  == "fact") {
                 var total = 1
-                for index in 0...args.count-2 {
-                    let i = Int(args[index])
-                    total *= i!
+                var curr = Int(args[0])
+                if(curr! < 0) {
+                    return 0
+                }
+                while curr! > 0 {
+                    total *= curr!
+                    curr! -= 1
                 }
                 return total
             }
@@ -59,12 +63,10 @@ public class Calculator {
             else if(args[1] == "/"){
                 return first! / second!
             }
-            else if(args[1] == "/"){
-                return first! / second!
-            }
             else if(args[1] == "%"){
                 let q = first! / second!
                 return first! - (q * second!)
+                //return first! % second!
             }
         }
         return 0
